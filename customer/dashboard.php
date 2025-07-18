@@ -164,6 +164,83 @@ $products = $stmt->fetchAll();
             50% { transform: translateY(-20px); }
         }
 
+        /* Quick Actions Section */
+        .quick-actions {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+        }
+
+        .quick-actions-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .quick-actions-header h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .quick-actions-header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .action-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .action-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .action-card.order-history {
+            background: linear-gradient(135deg, #6C63FF 0%, #5A52FF 100%);
+            color: white;
+        }
+
+        .action-card.browse-products {
+            background: linear-gradient(135deg, #FFB366 0%, #FF9A4D 100%);
+            color: white;
+        }
+
+        .action-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .action-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
         /* Main Content */
         .main-content {
             max-width: 1200px;
@@ -421,6 +498,10 @@ $products = $stmt->fetchAll();
                 justify-content: center;
             }
 
+            .actions-grid {
+                grid-template-columns: 1fr;
+            }
+
             .products-grid {
                 grid-template-columns: 1fr;
             }
@@ -499,8 +580,28 @@ $products = $stmt->fetchAll();
         </div>
     </section>
 
+    <!-- Quick Actions Section -->
+    <section class="quick-actions">
+        <div class="quick-actions-header">
+            <h2>Quick Actions</h2>
+            <p>Access your frequently used features</p>
+        </div>
+        <div class="actions-grid">
+            <a href="order_history.php" class="action-card order-history fade-in">
+                <i class="fas fa-history"></i>
+                <h3>Order History</h3>
+                <p>View your past orders and track delivery status</p>
+            </a>
+            <a href="#products" class="action-card browse-products fade-in" style="animation-delay: 0.1s;">
+                <i class="fas fa-search"></i>
+                <h3>Browse Products</h3>
+                <p>Explore fresh yogurt-fura combinations from local vendors</p>
+            </a>
+        </div>
+    </section>
+
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" id="products">
         <div class="section-header">
             <h2>Available Yoghurt-Fura Products</h2>
             <p>Explore our selection of fresh, locally-made yogurt-fura combinations from approved vendors in your area.</p>
@@ -635,6 +736,15 @@ $products = $stmt->fetchAll();
                     setTimeout(() => {
                         ripple.remove();
                     }, 600);
+                });
+            });
+
+            // Smooth scroll for browse products button
+            const browseProductsBtn = document.querySelector('.action-card.browse-products');
+            browseProductsBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('#products').scrollIntoView({ 
+                    behavior: 'smooth' 
                 });
             });
 

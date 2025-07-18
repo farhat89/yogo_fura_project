@@ -13,7 +13,7 @@ require_once dirname(__DIR__) . '/includes/config.php';
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f9e8d0;
+            background-color: whitesmoke;
             color: #212529;
             margin: 0;
             padding: 0;

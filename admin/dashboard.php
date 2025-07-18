@@ -36,18 +36,34 @@ $order_status_data = $stmt->fetchAll();
 <?php include '../includes/header.php'; ?>
 
 <style>
-.dashboard-container {
-    padding: 0;
-    min-height: calc(100vh - 60px); /* Account for header */
-    background: #f8f9fa;
+/* Reset and override all body styles */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
 }
 
+/* Force dashboard container to fill the entire body */
+.dashboard-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    min-height: 100% !important; /* Use 100% to match body height */
+    background: #f9e8d0 !important;
+    display: block !important; /* Avoid flex conflicts */
+    position: relative; /* Ensure proper positioning context */
+}
+
+/* Adjust content to fill the container minus navbar */
 .dashboard-content {
     padding: 1.5rem;
     width: 100%;
-    min-height: 100%;
+    min-height: calc(100vh - 60px); /* Adjust for navbar height */
     background: white;
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    margin: 0 !important;
 }
 
 @media (min-width: 992px) {
