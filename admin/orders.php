@@ -13,7 +13,9 @@ $orders = $stmt->fetchAll();
 // Calculate statistics
 $totalOrders = count($orders);
 $pendingOrders = count(array_filter($orders, function($order) { return $order['status'] === 'pending'; }));
-$completedOrders = count(array_filter($orders, function($order) { return $order['status'] === 'completed'; }));
+$confirmedOrders = count(array_filter($orders, function($order) { return $order['status'] === 'confirmed'; }));
+$processingOrders = count(array_filter($orders, function($order) { return $order['status'] === 'processing'; }));
+$deliveredOrders = count(array_filter($orders, function($order) { return $order['status'] === 'delivered'; }));
 $totalRevenue = array_sum(array_column($orders, 'total_price'));
 ?>
 
@@ -130,7 +132,17 @@ $totalRevenue = array_sum(array_column($orders, 'total_price'));
     color: #2d3436;
 }
 
-.status-completed {
+.status-confirmed {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+}
+
+.status-processing {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.status-delivered {
     background: linear-gradient(135deg, #55efc4, #00b894);
     color: white;
 }
@@ -303,7 +315,7 @@ $totalRevenue = array_sum(array_column($orders, 'total_price'));
         </div>
         <div class="col-md-3 col-sm-6 mb-3">
             <div class="card stats-card stats-completed">
-                <h3><?php echo $completedOrders; ?></h3>
+                <h3><?php echo $deliveredOrders; ?></h3>
                 <p>Completed Orders</p>
             </div>
         </div>
@@ -326,7 +338,9 @@ $totalRevenue = array_sum(array_column($orders, 'total_price'));
             <select class="form-select filter-select" id="statusFilter">
                 <option value="">All Status</option>
                 <option value="pending">Pending</option>
-                <option value="completed">Completed</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="processing">Processing</option>
+                <option value="delivered">Delivered</option>
                 <option value="cancelled">Cancelled</option>
             </select>
         </div>
@@ -399,8 +413,10 @@ $totalRevenue = array_sum(array_column($orders, 'total_price'));
                                         <?php 
                                         $statusIcons = [
                                             'pending' => 'fas fa-clock',
-                                            'completed' => 'fas fa-check-circle',
-                                            'cancelled' => 'fas fa-times-circle'
+                                            'confirmed' => 'fas fa-check',
+                                            'processing' => 'fas fa-spinner',
+                                            'delivered' => 'fas fa-truck',
+                                            'cancelled' => 'fas fa-times'
                                         ];
                                         $icon = $statusIcons[$order['status']] ?? 'fas fa-info-circle';
                                         ?>

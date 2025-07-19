@@ -26,72 +26,9 @@ $products = $stmt->fetchAll();
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #fff5f0 0%, #f8f9fa 100%);
-            min-height: 100vh;
-            color: #333;
-        }
-
-        /* Navigation Bar */
-        .navbar {
-            background: linear-gradient(135deg, #FFB366 0%, #FF9A4D 100%);
-            padding: 1rem 0;
-            box-shadow: 0 2px 20px rgba(255, 179, 102, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-        .logo i {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem;
-            border-radius: 50%;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-        }
-
-        .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
         /* Hero Section */
         .hero-section {
-            background: linear-gradient(135deg, #A8E6CF 0%, #7FDBCD 100%);
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
             padding: 3rem 0;
             margin-bottom: 3rem;
             position: relative;
@@ -239,13 +176,6 @@ $products = $stmt->fetchAll();
             font-size: 0.9rem;
             opacity: 0.9;
             line-height: 1.4;
-        }
-
-        /* Main Content */
-        .main-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
         }
 
         .section-header {
@@ -527,27 +457,8 @@ $products = $stmt->fetchAll();
     </style>
 </head>
 <body>
-    <!-- Include your existing header if you want to use it -->
     <?php // include '../includes/header.php'; ?>
     <?php include '../includes/header.php'; ?>
-
-    <!-- Navigation -->
-    <!-- <nav class="navbar">
-        <div class="nav-container">
-            <a href="<?php echo BASE_URL; ?>" class="logo">
-                <i class="fas fa-ice-cream"></i>
-                Smart YogoFura
-            </a>
-            <ul class="nav-links">
-                <li><a href="<?php echo BASE_URL; ?>"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="<?php echo BASE_URL; ?>vendors/"><i class="fas fa-store"></i> Vendors</a></li>
-                <li><a href="<?php echo BASE_URL; ?>about/"><i class="fas fa-info-circle"></i> About</a></li>
-                <li><a href="<?php echo BASE_URL; ?>contact/"><i class="fas fa-envelope"></i> Contact</a></li>
-                <li><a href="<?php echo BASE_URL; ?>customer/dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li><a href="<?php echo BASE_URL; ?>auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
-        </div>
-    </nav> -->
 
     <!-- Hero Section -->
     <section class="hero-section">

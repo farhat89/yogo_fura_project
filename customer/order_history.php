@@ -239,19 +239,24 @@ $orders = $stmt->fetchAll();
         background: linear-gradient(135deg, #ffc107, #ff9800);
         color: white;
     }
-    
-    .status-completed {
+
+    .status-confirmed {
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+        color: white;
+    }
+
+    .status-processing {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+    }
+
+    .status-delivered {
         background: linear-gradient(135deg, #28a745, #20c997);
         color: white;
     }
-    
+
     .status-cancelled {
         background: linear-gradient(135deg, #dc3545, #e74c3c);
-        color: white;
-    }
-    
-    .status-processing {
-        background: linear-gradient(135deg, #17a2b8, #007bff);
         color: white;
     }
     
@@ -446,10 +451,24 @@ $orders = $stmt->fetchAll();
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">
-                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-check"></i>
                     </div>
-                    <div class="stat-number"><?php echo count(array_filter($orders, function($o) { return $o['status'] == 'completed'; })); ?></div>
-                    <div class="stat-label">Completed Orders</div>
+                    <div class="stat-number"><?php echo count(array_filter($orders, function($o) { return $o['status'] == 'confirmed'; })); ?></div>
+                    <div class="stat-label">Confirmed Orders</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                    <div class="stat-number"><?php echo count(array_filter($orders, function($o) { return $o['status'] == 'processing'; })); ?></div>
+                    <div class="stat-label">Processing Orders</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="stat-number"><?php echo count(array_filter($orders, function($o) { return $o['status'] == 'delivered'; })); ?></div>
+                    <div class="stat-label">Delivered Orders</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">
@@ -469,8 +488,9 @@ $orders = $stmt->fetchAll();
                 <select class="filter-select" id="statusFilter">
                     <option value="">All Status</option>
                     <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
                     <option value="processing">Processing</option>
-                    <option value="completed">Completed</option>
+                    <option value="delivered">Delivered</option>
                     <option value="cancelled">Cancelled</option>
                 </select>
                 <select class="filter-select" id="vendorFilter">
@@ -538,9 +558,10 @@ $orders = $stmt->fetchAll();
                                     <?php 
                                     $statusIcons = [
                                         'pending' => 'fas fa-clock',
+                                        'confirmed' => 'fas fa-check',
                                         'processing' => 'fas fa-spinner',
-                                        'completed' => 'fas fa-check-circle',
-                                        'cancelled' => 'fas fa-times-circle'
+                                        'delivered' => 'fas fa-truck',
+                                        'cancelled' => 'fas fa-times'
                                     ];
                                     ?>
                                     <i class="<?php echo $statusIcons[$order['status']] ?? 'fas fa-info-circle'; ?> me-1"></i>

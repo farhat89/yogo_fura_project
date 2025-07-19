@@ -27,7 +27,6 @@ if (isset($_POST['update_product']) && isset($_POST['product_id'])) {
     $price = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
     $image = $_FILES['image']['name'] ?: null;
 
-    // Check if an image is uploaded, otherwise keep the existing one
     if ($image) {
         move_uploaded_file($_FILES['image']['tmp_name'], UPLOADS_DIR . $image);
     } else {
@@ -36,7 +35,6 @@ if (isset($_POST['update_product']) && isset($_POST['product_id'])) {
         $image = $stmt->fetchColumn() ?: '';
     }
 
-    // Update the existing product
     $stmt = $pdo->prepare("UPDATE menu SET name = ?, size = ?, toppings = ?, price = ?, image = ? WHERE id = ? AND vendor_id = ?");
     $stmt->execute([$name, $size, $toppings, $price, $image, $product_id, $_SESSION['user_id']]);
     $_SESSION['message'] = "Product updated successfully!";
@@ -690,13 +688,14 @@ $products = $stmt->fetchAll();
                                     </div>
                                 <?php endif; ?>
                                 <div class="product-actions">
-                                    <form method="POST" action="" style="display:inline;">
+                                    <form method="POST" action="" style="display:inline;" class="delete-form">
                                         <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
-                                        <button type="submit" class="btn-delete" name="delete_product">
+                                        <input type="hidden" name="delete_product" value="1">
+                                        <button type="submit" class="btn-delete" onclick="return confirmDelete(this)">
                                             <i class="fas fa-trash"></i> Delete
                                         </button>
                                     </form>
-                                    <button class="btn-edit" data-product='<?php echo json_encode($product, JSON_HEX_TAG); ?>' data-id="<?php echo $product['id']; ?>">
+                                    <button class="btn-edit" onclick="openEditModal(<?php echo htmlspecialchars(json_encode($product), ENT_QUOTES, 'UTF-8'); ?>)">
                                         <i class="fas fa-edit"></i> Edit
                                     </button>
                                 </div>
@@ -710,7 +709,7 @@ $products = $stmt->fetchAll();
         <!-- Edit Product Modal -->
         <div id="editModal" class="modal">
             <div class="modal-content">
-                <span class="close" onclick="closeEditModal()">×</span>
+                <span class="close" onclick="closeEditModal()">&times;</span>
                 <form method="POST" action="" enctype="multipart/form-data" id="editForm">
                     <input type="hidden" name="product_id" id="edit_product_id">
                     <div class="row">
@@ -843,9 +842,9 @@ function openEditModal(product) {
     currentProduct = product;
     const modal = document.getElementById('editModal');
     document.getElementById('edit_product_id').value = product.id;
-    document.getElementById('edit_name').value = product.name || '';
-    document.getElementById('edit_size').value = product.size || 'small';
-    document.getElementById('edit_price').value = product.price || 0.00;
+    document.getElementById('edit_name').value = product.name;
+    document.getElementById('edit_size').value = product.size;
+    document.getElementById('edit_price').value = product.price;
 
     const toppingsDiv = document.getElementById('edit_toppings');
     toppingsDiv.innerHTML = '';
@@ -882,7 +881,7 @@ function openEditModal(product) {
     editImagePreview.style.display = 'none';
     if (product.image) {
         editImagePreview.style.display = 'block';
-        editPreviewImg.src = '<?php echo BASE_URL; ?>uploads/' + encodeURIComponent(product.image);
+        editPreviewImg.src = '<?php echo BASE_URL; ?>uploads/' + product.image;
     }
 
     editImageInput.addEventListener('change', function(e) {
@@ -899,13 +898,6 @@ function openEditModal(product) {
                 editImagePreview.style.display = 'block';
             };
             reader.readAsDataURL(file);
-        } else {
-            editFileUploadArea.classList.remove('file-selected');
-            editUploadIcon.classList.remove('success');
-            editUploadText.classList.remove('success');
-            editUploadIcon.innerHTML = '<i class="fas fa-cloud-upload-alt"></i>';
-            editUploadText.textContent = 'Click to upload or drag and drop';
-            editImagePreview.style.display = 'none';
         }
     });
 
@@ -936,17 +928,19 @@ window.onclick = function(event) {
 };
 
 document.getElementById('editForm').addEventListener('submit', function() {
+    // Explicitly set the update_product parameter
+    const updateInput = document.createElement('input');
+    updateInput.type = 'hidden';
+    updateInput.name = 'update_product';
+    updateInput.value = '1';
+    this.appendChild(updateInput);
+    
     const submitBtn = this.querySelector('.add-product-btn');
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating Product...';
     submitBtn.disabled = true;
-});
-
-// Add event listeners for edit buttons
-document.querySelectorAll('.btn-edit').forEach(button => {
-    button.addEventListener('click', function() {
-        const productData = JSON.parse(this.getAttribute('data-product'));
-        openEditModal(productData);
-    });
+    
+    // Ensure the form will submit
+    return true;
 });
 </script>
 
