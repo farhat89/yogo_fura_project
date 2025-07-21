@@ -1,4 +1,28 @@
 <?php
+/**
+ * Order Management Dashboard - TheFresh.Corner Admin
+ *
+ * This file displays all customer orders and provides real-time monitoring and management tools for admins.
+ *
+ * Key Features:
+ * - Only accessible by authenticated admin users (session check).
+ * - Lists all orders with customer, vendor, product, quantity, price, and status.
+ * - Calculates and displays key statistics: total orders, pending, completed, and total revenue.
+ * - Search and filter orders by ID, customer, vendor, product, or status (client-side JS).
+ * - Responsive UI with styled cards and status badges.
+ * - Displays empty state when no orders are found.
+ *
+ * Maintenance Notes:
+ * - Keep order status logic in sync with business rules.
+ * - Extend order info display as needed.
+ * - Ensure search and UI remain performant for large datasets.
+ * - Consider adding pagination, bulk actions, or export features for scalability.
+ *
+ * @author  TheFresh.Corner Dev Team
+ * @version 1.0
+ * @since   2025-07-19
+ */
+
 require_once '../includes/config.php';
 require_once '../includes/db_connect.php';
 

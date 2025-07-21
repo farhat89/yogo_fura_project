@@ -1,4 +1,28 @@
 <?php
+/**
+ * Checkout Page & Payment Handler - TheFresh.Corner Customer
+ *
+ * This file displays the checkout summary and handles payment simulation for customer orders.
+ *
+ * Key Features:
+ * - Only accessible by authenticated customers (session check).
+ * - Fetches order details, calculates subtotal and delivery fee, and displays a full price breakdown.
+ * - Shows scheduled time, delivery/pickup info, and interactive Google Maps embed for delivery address.
+ * - Handles payment simulation: updates order total, inserts payment record, and redirects to order history.
+ * - Responsive UI with styled cards, icons, and secure payment section.
+ * - Includes loading state for payment button and smooth scrolling for anchor links.
+ *
+ * Maintenance Notes:
+ * - Ensure payment logic matches real payment gateway integration if implemented.
+ * - Extend checkout logic for new delivery types, fees, or payment methods.
+ * - Validate all user input and order data for security.
+ * - Avoid leaking sensitive information in error messages.
+ *
+ * @author  TheFresh.Corner Dev Team
+ * @version 1.0
+ *
+ */
+
 require_once '../includes/config.php';
 require_once '../includes/db_connect.php';
 

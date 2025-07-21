@@ -1,4 +1,40 @@
 <?php
+/**
+ * Admin Dashboard - TheFresh.Corner
+ * 
+ * This file renders the main admin dashboard, providing a summary of key business metrics,
+ * interactive charts, user management, and recent activity for administrators.
+ * 
+ * Key Features:
+ * - Displays statistics: total orders, sales, vendors, users.
+ * - Visualizes sales trends (last 7 days) and order status distribution using Chart.js.
+ * - User management table: view, add, and delete users via modal and AJAX.
+ * - Recent activity feed for quick status updates.
+ * - Responsive design with Bootstrap and custom CSS for a modern UI.
+ * 
+ * Data Sources:
+ * - Orders and users data are fetched from the database using PDO.
+ * - Chart data is dynamically generated from recent orders and order statuses.
+ * 
+ * JS Functionality:
+ * - Chart.js for rendering charts.
+ * - AJAX functions for adding and deleting users without page reload.
+ * 
+ * Structure:
+ * - PHP: Handles authentication, data queries, and HTML rendering.
+ * - HTML/CSS: Layout and styling for dashboard components.
+ * - JS: Chart rendering and user management actions.
+ * 
+ * Maintenance Notes:
+ * - Ensure all queries are optimized for performance.
+ * - Keep UI/UX consistent with the rest of the admin panel.
+ * - Update chart colors and labels as new order statuses are added.
+ * - Validate user input on both client and server sides for security.
+ * 
+ * @author  TheFresh.Corner Dev Team
+ * @version 1.0
+ * @since   2025-07
+ */
 require_once '../includes/config.php';
 require_once '../includes/db_connect.php';
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {

@@ -1,4 +1,28 @@
 <?php
+/**
+ * Registration Page & Handler - TheFresh.Corner
+ *
+ * This file provides the registration form and handles new user sign-ups for customers and vendors.
+ *
+ * Key Features:
+ * - Accepts name, email, contact, password, and role via POST.
+ * - Sanitizes and validates user input.
+ * - Hashes passwords securely before storing.
+ * - Sets user status to 'pending' for admin approval.
+ * - Displays success or error messages after registration.
+ * - Responsive UI with promotional section and password visibility toggle.
+ *
+ * Maintenance Notes:
+ * - Extend registration logic for new roles or additional fields as needed.
+ * - Ensure validation and security best practices are followed.
+ * - Avoid leaking sensitive information in error messages.
+ * - Consider adding email verification or CAPTCHA for security.
+ *
+ * @author  TheFresh.Corner Dev Team
+ * @version 1.0
+ * @since   2025-07-19
+ */
+
 require_once '../includes/config.php';
 require_once '../includes/db_connect.php';
 

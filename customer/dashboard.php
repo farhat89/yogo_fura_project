@@ -1,4 +1,29 @@
 <?php
+/**
+ * Customer Dashboard - TheFresh.Corner
+ *
+ * This file displays the main dashboard for customers, showcasing available products and quick actions.
+ *
+ * Key Features:
+ * - Only accessible by authenticated customers (session check).
+ * - Lists all available yogurt-fura products from approved vendors.
+ * - Displays vendor info, product details, price, and order button for each product.
+ * - Shows hero section with stats (products, vendors, customers).
+ * - Quick actions for order history and browsing products.
+ * - Search/filter products by name, vendor, or toppings (client-side JS).
+ * - Responsive UI with modern cards, badges, and interactive effects.
+ *
+ * Maintenance Notes:
+ * - Extend product info display as needed.
+ * - Ensure search and UI remain performant for large datasets.
+ * - Keep vendor/product logic in sync with business rules.
+ * - Consider adding pagination, sorting, or personalized recommendations.
+ *
+ * @author  TheFresh.Corner Dev Team
+ * @version 1.0
+ * @since   2025-07-19
+ */
+
 require_once '../includes/config.php';
 require_once '../includes/db_connect.php';
 

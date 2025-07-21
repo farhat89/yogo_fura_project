@@ -1,4 +1,27 @@
 <?php
+/**
+ * Global Header & Navigation - TheFresh.Corner
+ *
+ * This file renders the main navigation bar and header styles for all pages.
+ *
+ * Key Features:
+ * - Displays site branding and logo.
+ * - Shows navigation links for Home, Vendors, About, and Contact.
+ * - Dynamically displays Dashboard and Logout links for authenticated users, or Sign In/Sign Up for guests.
+ * - Responsive design with Bootstrap and custom styles for desktop and mobile.
+ * - Shows session-based alert messages for user feedback.
+ *
+ * Maintenance Notes:
+ * - Update navigation links as new pages/features are added.
+ * - Ensure session logic matches authentication flows.
+ * - Keep branding and style consistent with the rest of the application.
+ * - Extend alert logic for new message types or notification systems.
+ *
+ * @author  TheFresh.Corner Dev Team
+ * @version 1.0
+ * @since   2025-07-01
+ */
+
 // Use an absolute path to include config.php from the project root
 require_once dirname(__DIR__) . '/includes/config.php';
 ?>

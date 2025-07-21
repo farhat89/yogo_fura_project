@@ -1,4 +1,27 @@
 <?php
+/**
+ * Customer Management Dashboard - TheFresh.Corner Admin
+ *
+ * This file displays all pending customer registrations and allows admins to approve them.
+ *
+ * Key Features:
+ * - Only accessible by authenticated admin users (session check).
+ * - Lists pending customers with name, email, and contact info.
+ * - Approve customers via form submission (updates status in database).
+ * - Search/filter customers by name, email, or contact (client-side JS).
+ * - Responsive UI with styled cards and badges for pending status.
+ * - Displays empty state when no pending approvals exist.
+ *
+ * Maintenance Notes:
+ * - Keep approval logic in sync with business rules.
+ * - Extend customer info display as needed.
+ * - Ensure search and UI remain performant for large datasets.
+ * - Consider adding pagination or bulk actions for scalability.
+ *
+ * @author  TheFresh.Corner Dev Team
+ * @version 1.0
+ * @since   2025-
+ */
 require_once '../includes/config.php';
 require_once '../includes/db_connect.php';
 

@@ -1,4 +1,28 @@
 <?php
+/**
+ * Vendor Management Dashboard - TheFresh.Corner Admin
+ *
+ * This file displays all vendor accounts and allows admins to manage their status.
+ *
+ * Key Features:
+ * - Only accessible by authenticated admin users (session check).
+ * - Lists all vendors with name, email, registration date, and current status.
+ * - Update vendor status (pending, approved, rejected) via form submission.
+ * - Search/filter vendors by name or email (client-side JS).
+ * - Responsive UI with animated cards and status badges.
+ * - Displays empty state when no vendors are found.
+ *
+ * Maintenance Notes:
+ * - Keep vendor status logic in sync with business rules.
+ * - Extend vendor info display as needed.
+ * - Ensure search and UI remain performant for large datasets.
+ * - Consider adding pagination, bulk actions, or export features for scalability.
+ *
+ * @author  TheFresh.Corner Dev Team
+ * @version 1.0
+ * @since   2025-07-01
+ */
+
 require_once '../includes/config.php';
 require_once '../includes/db_connect.php';
 

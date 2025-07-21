@@ -1,4 +1,29 @@
 <?php
+/**
+ * Place Order Page & Handler - TheFresh.Corner Customer
+ *
+ * This file displays the order form for a selected product and handles order creation for customers.
+ *
+ * Key Features:
+ * - Only accessible by authenticated customers (session check).
+ * - Fetches product details from the menu for the selected item.
+ * - Allows customers to select quantity, delivery type (pickup/delivery), address, and scheduled time.
+ * - Calculates total price including delivery fee and displays a live order summary.
+ * - Validates form input and prevents submission without required fields.
+ * - Inserts new order into the database and redirects to checkout on success.
+ * - Responsive UI with modern cards, icons, and interactive controls.
+ *
+ * Maintenance Notes:
+ * - Extend order logic for new delivery types, fees, or product options.
+ * - Ensure validation and security best practices are followed.
+ * - Avoid leaking sensitive information in error messages.
+ * - Consider adding order confirmation, notifications, or payment integration.
+ *
+ * @author  TheFresh.Corner Dev Team
+ * @version 1.0
+ * @since   2025-07
+ */
+
 require_once '../includes/config.php';
 require_once '../includes/db_connect.php';
 

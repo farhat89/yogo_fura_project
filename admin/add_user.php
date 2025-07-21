@@ -1,4 +1,27 @@
 <?php
+/**
+ * Add User API Endpoint - TheFresh.Corner Admin
+ *
+ * This file handles AJAX POST requests to create new users in the system.
+ * 
+ * Key Features:
+ * - Only accessible by authenticated admin users (session check).
+ * - Validates all required fields, email format, role, and status.
+ * - Checks for duplicate email before insertion.
+ * - Hashes user password securely using PHP's password_hash.
+ * - Inserts new user record into the database with current timestamp.
+ * - Returns JSON response indicating success or error for frontend handling.
+ * 
+ * Maintenance Notes:
+ * - Extend validation as needed for new user fields.
+ * - Ensure error messages do not leak sensitive database details in production.
+ * - Keep role and status lists in sync with business logic.
+ * - Consider logging failed attempts for audit purposes.
+ *
+ * @author  TheFresh.Corner Dev Team
+ * @version 1.0
+ */
+
 require_once '../includes/config.php';
 require_once '../includes/db_connect.php';
 

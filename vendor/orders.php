@@ -1,4 +1,29 @@
 <?php
+/**
+ * Vendor Orders Management Dashboard - TheFresh.Corner
+ *
+ * This file displays all orders for the logged-in vendor and provides tools to manage order statuses.
+ *
+ * Key Features:
+ * - Only accessible by authenticated vendors (session check).
+ * - Lists all orders with customer, product, quantity, delivery type, address, scheduled time, and status.
+ * - Displays statistics cards for total, pending, confirmed, processing, delivered, and cancelled orders.
+ * - Allows vendors to update order status via dropdown and form submission.
+ * - Search and filter orders by customer, product, or status (client-side JS).
+ * - Responsive UI with modern cards, badges, and interactive table.
+ * - Displays empty state when no orders exist.
+ *
+ * Maintenance Notes:
+ * - Keep order status logic in sync with business rules.
+ * - Extend order info display or actions as needed.
+ * - Ensure search and UI remain performant for large datasets.
+ * - Consider adding pagination, export, or notification features for scalability.
+ *
+ * @author  TheFresh.Corner Dev Team
+ * @version 1.0
+ * @since   2025
+ */
+
 require_once '../includes/config.php';
 require_once '../includes/db_connect.php';
 

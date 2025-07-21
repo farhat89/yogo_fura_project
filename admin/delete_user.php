@@ -1,4 +1,26 @@
 <?php
+/**
+ * Delete User API Endpoint - TheFresh.Corner Admin
+ *
+ * This file handles AJAX POST requests to delete a user from the system.
+ *
+ * Key Features:
+ * - Only accessible by authenticated admin users (session check).
+ * - Validates user ID and prevents deletion of own account or last admin.
+ * - Deletes related orders and (optionally) products for vendors.
+ * - Uses database transactions for safe multi-step deletion.
+ * - Returns JSON response indicating success or error for frontend handling.
+ *
+ * Maintenance Notes:
+ * - Consider handling related data (orders/products) more granularly for business needs.
+ * - Extend protection logic as needed for new roles or relationships.
+ * - Ensure error messages do not leak sensitive database details in production.
+ * - Audit deletion actions for accountability.
+ *
+ * @author  TheFresh.Corner Dev Team
+ * @version 1.0
+ */
+
 require_once '../includes/config.php';
 require_once '../includes/db_connect.php';
 

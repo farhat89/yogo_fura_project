@@ -1,4 +1,28 @@
 <?php
+/**
+ * Customer Order History - TheFresh.Corner
+ *
+ * This file displays a customer's complete order history with filtering and statistics.
+ *
+ * Key Features:
+ * - Only accessible by authenticated customers (session check).
+ * - Lists all orders with product, vendor, quantity, price, delivery type, scheduled time, and status.
+ * - Shows summary statistics: total orders, pending, confirmed, processing, delivered, and total spent.
+ * - Filter orders by status and vendor using interactive dropdowns (client-side JS).
+ * - Responsive UI with modern cards, badges, and smooth scroll animations.
+ * - Displays empty state when no orders exist, with CTA to browse menu.
+ *
+ * Maintenance Notes:
+ * - Extend order info display as needed.
+ * - Ensure filtering and UI remain performant for large datasets.
+ * - Keep order status logic in sync with business rules.
+ * - Consider adding pagination, export, or reorder features for scalability.
+ *
+ * @author  TheFresh.Corner Dev Team
+ * @version 1.0
+ * @since   2025-
+ */
+
 require_once '../includes/config.php';
 require_once '../includes/db_connect.php';
 

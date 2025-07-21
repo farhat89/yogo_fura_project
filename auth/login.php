@@ -1,4 +1,29 @@
 <?php
+/**
+ * Login Page & Authentication Handler - TheFresh.Corner
+ *
+ * This file provides the login form and handles user authentication for all roles.
+ *
+ * Key Features:
+ * - Accepts email and password via POST.
+ * - Sanitizes and validates user input.
+ * - Verifies credentials against the database using secure password hashing.
+ * - Checks user status (approved/pending) before granting access.
+ * - Sets session variables for authenticated users and redirects to role-specific dashboard.
+ * - Displays error messages for invalid credentials or pending approval.
+ * - Responsive UI with promotional section and password visibility toggle.
+ *
+ * Maintenance Notes:
+ * - Ensure authentication logic remains secure and up-to-date.
+ * - Extend login logic for new roles or multi-factor authentication if needed.
+ * - Avoid leaking sensitive information in error messages.
+ * - Consider rate limiting or logging failed login attempts for security.
+ *
+ * @author  TheFresh.Corner Dev Team
+ * @version 1.0
+ * @since   2025-07
+ */
+
 require_once '../includes/config.php';
 require_once '../includes/db_connect.php';
 

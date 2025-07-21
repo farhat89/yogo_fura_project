@@ -1,4 +1,27 @@
 <?php
+/**
+ * Vendor Dashboard - TheFresh.Corner
+ *
+ * This file displays the main dashboard for vendors, providing business performance insights and quick management actions.
+ *
+ * Key Features:
+ * - Only accessible by authenticated vendors (session check).
+ * - Shows welcome section with vendor name and active status.
+ * - Displays statistics cards for total orders and total earnings.
+ * - Quick actions for managing products and viewing orders.
+ * - Responsive UI with modern cards, icons, and alert tips for best practices.
+ *
+ * Maintenance Notes:
+ * - Extend dashboard logic for new metrics or business features.
+ * - Ensure statistics calculations remain accurate and performant.
+ * - Keep UI and navigation consistent with the rest of the vendor portal.
+ * - Consider adding charts, notifications, or personalized recommendations.
+ *
+ * @author  TheFresh.Corner Dev Team
+ * @version 1.0
+ * @since   2025-07-19
+ */
+
 require_once '../includes/config.php';
 require_once '../includes/db_connect.php';
 

@@ -1,4 +1,29 @@
 <?php
+/**
+ * Vendor Products Management Dashboard - TheFresh.Corner
+ *
+ * This file allows vendors to add, update, and delete their yogurt-fura products.
+ *
+ * Key Features:
+ * - Only accessible by authenticated vendors (session check).
+ * - Add new products with name, size, toppings, price, and image upload.
+ * - Edit existing products via modal form with live preview and topping selection.
+ * - Delete products with confirmation prompt.
+ * - Lists all products in a responsive grid with details and actions.
+ * - Displays success/error messages for all product actions.
+ * - Modern UI with styled cards, file upload area, and interactive controls.
+ *
+ * Maintenance Notes:
+ * - Extend product logic for new attributes or business rules.
+ * - Ensure validation and security best practices for file uploads and form data.
+ * - Keep UI and product management consistent with the rest of the vendor portal.
+ * - Consider adding pagination, bulk actions, or analytics for scalability.
+ *
+ * @author  TheFresh.Corner Dev Team
+ * @version 1.0
+ * @since   2025-07
+ */
+
 require_once '../includes/config.php';
 require_once '../includes/db_connect.php';
 
